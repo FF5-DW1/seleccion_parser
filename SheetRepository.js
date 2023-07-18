@@ -1,6 +1,6 @@
 const { google } = require('googleapis');
-const API_KEY = 'AIzaSyDaLsqU3EYuHy7H4zULSZu4CHPs_-NfWks';
-const SheetID = '1FJTGREcIZ3KLuZtI7YhsX-Sog00AXbw3rKTsf13p3b8';
+const API_KEY = '';
+const SheetID = '';
 
 class SheetRepository {
 
