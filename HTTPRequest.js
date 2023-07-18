@@ -1,3 +1,5 @@
+const request = require('request');
+const asyncRequest = require('request-promise');
 // Clase HTTPRequest
 class HTTPRequest {
     constructor(url) {
@@ -5,7 +7,6 @@ class HTTPRequest {
     }
 
     getContent(callback) {
-        const request = require('request');
 
         // Realizar la solicitud HTTP
         request(this.url, (error, response, body) => {
@@ -17,6 +18,35 @@ class HTTPRequest {
                 callback(null, body);
             }
         });
+    }
+
+    async getAsyncContent(resolve, reject) {
+
+
+        return await asyncRequest(this.url);
+
+        const req = asyncRequest(this.url)
+            .then(response => {
+                // console.log("response");
+                // console.log(response);
+                if (response.statusCode === 200) {
+                    return response;
+                } else {
+                    return false;
+                    // return new Error(response.statusCode);
+                }
+                // response.body
+            })
+            // .then(response => response)
+            .catch(error => {
+                console.log("error");
+                console.log(error.error);
+            });
+
+        // Realizar la solicitud HTTP
+        return req;
+
+
     }
 }
 module.exports = HTTPRequest;
