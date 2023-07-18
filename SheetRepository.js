@@ -1,6 +1,4 @@
 const { google } = require('googleapis');
-const API_KEY = '';
-const SheetID = '';
 
 class SheetRepository {
 
@@ -8,12 +6,13 @@ class SheetRepository {
     colUser = 'F';  
     colRepo = 'G';
     colPuntos = 'H';
+    keyFile = 'secret.json';
 
     constructor(sheetId) {
         this.sheetId = sheetId;
 
         this.auth = new google.auth.GoogleAuth({
-            keyFile: 'secret.json',
+            keyFile: this.keyFile,
             scopes: ['https://www.googleapis.com/auth/spreadsheets'],
         });
 
