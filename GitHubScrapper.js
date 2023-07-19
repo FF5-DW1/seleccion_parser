@@ -15,9 +15,9 @@ class GitHubScrapper {
     async getPoints(url, id) {
         const httpRequest = new HTTPRequest(url);
         try {
-            let content = await httpRequest.getAsyncContent();
+            let html = await httpRequest.getAsyncContent();
 
-            let points = await this.calculatePoints(content);
+            let points = await this.calculatePoints(html);
 
             return {"puntos": points, "id":id};
         } catch (error) {
